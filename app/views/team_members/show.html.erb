@@ -1,19 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @team_member.first_name %>
-</p>
+<div class='card my-3'>
+  <div class="card-header">
+    <h1>Viewing <%= @team_member.first_name %> <%= @team_member.last_name %></h1>
+  </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @team_member.last_name %>
-</p>
+  <div class="card-body">
+    <p>
+      <strong>First name:</strong>
+      <%= @team_member.first_name %>
+    </p>
 
-<p>
-  <strong>Grouping:</strong>
-  <%= @team_member.grouping_id %>
-</p>
+    <p>
+      <strong>Last name:</strong>
+      <%= @team_member.last_name %>
+    </p>
 
-<%= link_to 'Edit', edit_team_member_path(@team_member) %> |
-<%= link_to 'Back', team_members_path %>
+    <p>
+      <strong>Group:</strong>
+      <%= @team_member.grouping_id || 'None' %>
+    </p>
+  </div>
+</div>
+
+<div class="flex my-3">
+  <%= link_to 'Edit', edit_team_member_path(@team_member) %> |
+  <%= link_to 'Show all team members', team_members_path %>
+</div>
