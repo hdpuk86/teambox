@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Groupings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groupings.each do |grouping| %>
+      <tr>
+        <td><%= grouping.id %></td>   
+        <td><%= link_to 'Show', grouping %></td>
+        <td><%= link_to 'Destroy', grouping, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grouping', new_grouping_path %>
