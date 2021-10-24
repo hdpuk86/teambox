@@ -15,13 +15,9 @@ class GroupingsController < ApplicationController
     @grouping = Grouping.new
   end
 
-  # GET /groupings/1/edit
-  def edit
-  end
-
   # POST /groupings or /groupings.json
   def create
-    @grouping = Grouping.new(grouping_params)
+    @grouping = Grouping.new
 
     respond_to do |format|
       if @grouping.save
@@ -29,19 +25,6 @@ class GroupingsController < ApplicationController
         format.json { render :show, status: :created, location: @grouping }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @grouping.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /groupings/1 or /groupings/1.json
-  def update
-    respond_to do |format|
-      if @grouping.update(grouping_params)
-        format.html { redirect_to @grouping, notice: "Grouping was successfully updated." }
-        format.json { render :show, status: :ok, location: @grouping }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @grouping.errors, status: :unprocessable_entity }
       end
     end
@@ -60,10 +43,5 @@ class GroupingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_grouping
       @grouping = Grouping.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def grouping_params
-      params.fetch(:grouping, {})
     end
 end

@@ -28,16 +28,6 @@ class GroupingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_grouping_url(@grouping)
-    assert_response :success
-  end
-
-  test "should update grouping" do
-    patch grouping_url(@grouping), params: { grouping: {  } }
-    assert_redirected_to grouping_url(@grouping)
-  end
-
   test "should destroy grouping" do
     assert_difference('Grouping.count', -1) do
       delete grouping_url(@grouping)
