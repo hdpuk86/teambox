@@ -21,6 +21,11 @@
     <%= form.text_field :last_name %>
   </div>
 
+  <div class="field">
+    <%= form.label :grouping_id %>
+    <%= form.select :grouping_id, options_for_select(@groupings.map { |grouping| [grouping.id, grouping.id] }), { include_hidden: false, prompt: 'Please select' } %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

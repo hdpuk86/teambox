@@ -13,10 +13,12 @@ class TeamMembersController < ApplicationController
   # GET /team_members/new
   def new
     @team_member = TeamMember.new
+    @groupings = Grouping.all
   end
 
   # GET /team_members/1/edit
   def edit
+    @groupings = Grouping.all
   end
 
   # POST /team_members or /team_members.json
@@ -64,6 +66,6 @@ class TeamMembersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def team_member_params
-      params.require(:team_member).permit(:first_name, :last_name)
+      params.require(:team_member).permit(:first_name, :last_name, :grouping_id)
     end
 end

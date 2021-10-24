@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_24_140007) do
+ActiveRecord::Schema.define(version: 2021_10_24_141215) do
+
+  create_table "groupings", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "team_members", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "grouping_id"
+    t.index ["grouping_id"], name: "index_team_members_on_grouping_id"
   end
 
+  add_foreign_key "team_members", "groupings"
 end

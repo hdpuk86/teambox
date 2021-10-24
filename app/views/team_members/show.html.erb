@@ -10,5 +10,10 @@
   <%= @team_member.last_name %>
 </p>
 
+<p>
+  <strong>Grouping:</strong>
+  <%= @team_member.grouping_id %>
+</p>
+
 <%= link_to 'Edit', edit_team_member_path(@team_member) %> |
 <%= link_to 'Back', team_members_path %>
