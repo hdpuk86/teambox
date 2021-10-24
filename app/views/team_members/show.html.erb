@@ -1,6 +1,8 @@
 <div class='card my-3'>
-  <div class="card-header">
+  <div class="card-header d-flex justify-content-between">
     <h1>Viewing: <%= @team_member.first_name %> <%= @team_member.last_name %></h1>
+
+    <%= link_to 'Delete', @team_member, method: :delete, class: 'btn btn-danger my-3', data: { confirm: 'Are you sure?' } %>
   </div>
 
   <div class="card-body">
@@ -22,10 +24,9 @@
         None
       <% end %>
     </p>
-  </div>
-</div>
 
-<div class="flex my-3">
-  <%= link_to 'Edit', edit_team_member_path(@team_member) %> |
-  <%= link_to 'Show all team members', team_members_path %>
+    <div class="d-flex justify-content-end">
+      <%= link_to 'Edit', edit_team_member_path(@team_member), class: 'btn btn-primary' %>
+    </div>
+  </div>
 </div>

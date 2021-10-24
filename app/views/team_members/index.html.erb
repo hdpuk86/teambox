@@ -1,6 +1,8 @@
 <div class="card my-3">
-  <div class="card-header">
+  <div class="card-header d-flex justify-content-between">
     <h1>Team Members</h1>
+
+    <%= link_to 'Add another', new_team_member_path, class: 'btn btn-secondary my-3' %>
   </div>
 
   <div class="card-body">
@@ -27,5 +29,3 @@
     </ul>
   </div>
 </div>
-
-<%= link_to 'New Team Member', new_team_member_path %>
