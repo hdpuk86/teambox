@@ -1,12 +1,12 @@
 class TeamMembersController < ApplicationController
   before_action :set_team_member, only: %i[ show edit update destroy ]
 
-  # GET /team_members or /team_members.json
+  # GET /team_members
   def index
     @team_members = TeamMember.all
   end
 
-  # GET /team_members/1 or /team_members/1.json
+  # GET /team_members/1
   def show
   end
 
@@ -19,41 +19,31 @@ class TeamMembersController < ApplicationController
   def edit
   end
 
-  # POST /team_members or /team_members.json
+  # POST /team_members
   def create
     @team_member = TeamMember.new(team_member_params)
 
-    respond_to do |format|
-      if @team_member.save
-        format.html { redirect_to @team_member, notice: "Team member was successfully created." }
-        format.json { render :show, status: :created, location: @team_member }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @team_member.errors, status: :unprocessable_entity }
-      end
+    if @team_member.save
+      redirect_to @team_member, notice: "Team member was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /team_members/1 or /team_members/1.json
+  # PATCH/PUT /team_members/1
   def update
-    respond_to do |format|
-      if @team_member.update(team_member_params)
-        format.html { redirect_to @team_member, notice: "Team member was successfully updated." }
-        format.json { render :show, status: :ok, location: @team_member }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @team_member.errors, status: :unprocessable_entity }
-      end
+    if @team_member.update(team_member_params)
+      redirect_to @team_member, notice: "Team member was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /team_members/1 or /team_members/1.json
+  # DELETE /team_members/1
   def destroy
     @team_member.destroy
-    respond_to do |format|
-      format.html { redirect_to team_members_url, notice: "Team member was successfully destroyed." }
-      format.json { head :no_content }
-    end
+
+    redirect_to team_members_url, notice: "Team member was successfully destroyed."
   end
 
   private
