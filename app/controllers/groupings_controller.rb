@@ -1,12 +1,12 @@
 class GroupingsController < ApplicationController
   before_action :set_grouping, only: %i[ show edit update destroy ]
 
-  # GET /groupings or /groupings.json
+  # GET /groupings
   def index
     @groupings = Grouping.all
   end
 
-  # GET /groupings/1 or /groupings/1.json
+  # GET /groupings/1
   def show
   end
 
@@ -15,32 +15,25 @@ class GroupingsController < ApplicationController
     @grouping = Grouping.new
   end
 
-  # POST /groupings or /groupings.json
+  # POST /groupings
   def create
     @grouping = Grouping.new
 
-    respond_to do |format|
-      if @grouping.save
-        format.html { redirect_to @grouping, notice: "Grouping was successfully created." }
-        format.json { render :show, status: :created, location: @grouping }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @grouping.errors, status: :unprocessable_entity }
-      end
+    if @grouping.save
+      redirect_to @grouping, notice: "Grouping was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # DELETE /groupings/1 or /groupings/1.json
+  # DELETE /groupings/1
   def destroy
     @grouping.destroy
-    respond_to do |format|
-      format.html { redirect_to groupings_url, notice: "Grouping was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to groupings_url, notice: "Grouping was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Use callbacks to share common setup
     def set_grouping
       @grouping = Grouping.find(params[:id])
     end
