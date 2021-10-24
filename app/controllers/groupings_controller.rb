@@ -1,28 +1,25 @@
 class GroupingsController < ApplicationController
-  before_action :set_grouping, only: %i[ show edit update destroy ]
+  before_action :set_grouping, only: %i[ show destroy ]
 
   # GET /groupings
   def index
     @groupings = Grouping.all
+    @grouping = Grouping.new
   end
 
   # GET /groupings/1
   def show
   end
 
-  # GET /groupings/new
-  def new
-    @grouping = Grouping.new
-  end
-
   # POST /groupings
   def create
+    @groupings = Grouping.all
     @grouping = Grouping.new
 
     if @grouping.save
-      redirect_to @grouping, notice: "Grouping was successfully created."
+      redirect_to groupings_path, notice: "Grouping was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 

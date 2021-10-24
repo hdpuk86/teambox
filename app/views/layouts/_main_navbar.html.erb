@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href=<%= root_url %>>Teambox</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to 'Team members',
+            team_members_url,
+            class: main_nav_class(team_members_path),
+            'aria-current' => main_nav_aria(team_members_path)
+          %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'Groupings',
+            groupings_url,
+            class: main_nav_class(groupings_url),
+            'aria-current' => main_nav_aria(groupings_url)
+          %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :groupings, except: [:edit, :update]
+  resources :groupings, except: [:new, :edit, :update]
   resources :team_members
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root to: 'team_members#index'
 end
