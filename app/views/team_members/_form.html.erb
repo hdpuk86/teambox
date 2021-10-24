@@ -11,22 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="row my-3">
+    <div class="col-12 col-md-6">
+      <%= form.label :first_name, class: 'form-label', for: 'first_name', 'aria-label' => 'First name' %>
+      <%= form.text_field :first_name, class: 'form-control', placeholder: 'First name' %>
+    </div>
+
+    <div class="col-12 col-md-6 mt-3 mt-md-0">
+      <%= form.label :last_name, class: 'form-label', for: 'last_name', 'aria-label' => 'Last name' %>
+      <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last name' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="row my-3">
+    <div class="col-12 col-md-6">
+      <%= form.label :grouping_id, class: 'form-label', for: 'grouping_id', 'aria-label' => 'Grouping ID' %>
+      <%= form.select :grouping_id,
+        options_for_select(@groupings.map { |grouping| [grouping.id, grouping.id] }),
+        { include_hidden: false, prompt: 'Please select' },
+        { class: 'form-select' }
+      %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :grouping_id %>
-    <%= form.select :grouping_id, options_for_select(@groupings.map { |grouping| [grouping.id, grouping.id] }), { include_hidden: false, prompt: 'Please select' } %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="d-flex justify-content-end my-3">
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
   </div>
 <% end %>
