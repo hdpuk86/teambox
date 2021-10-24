@@ -10,17 +10,13 @@ class GroupingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_grouping_url
-    assert_response :success
-  end
-
   test "should create grouping" do
     assert_difference('Grouping.count') do
-      post groupings_url, params: { grouping: {  } }
+      post groupings_url
     end
 
-    assert_redirected_to grouping_url(Grouping.last)
+    assert_redirected_to groupings_url
+    assert_equal 'Grouping was successfully created.', flash.notice
   end
 
   test "should show grouping" do
