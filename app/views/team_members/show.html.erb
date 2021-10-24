@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <div class='card my-3'>
   <div class="card-header">
-    <h1>Viewing <%= @team_member.first_name %> <%= @team_member.last_name %></h1>
+    <h1>Viewing: <%= @team_member.first_name %> <%= @team_member.last_name %></h1>
   </div>
 
   <div class="card-body">
@@ -18,7 +16,11 @@
 
     <p>
       <strong>Group:</strong>
-      <%= @team_member.grouping_id || 'None' %>
+      <% if @team_member.grouping_id.present? %>
+        <%= link_to @team_member.grouping_id, @team_member.grouping %>
+      <% else %>
+        None
+      <% end %>
     </p>
   </div>
 </div>

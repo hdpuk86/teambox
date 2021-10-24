@@ -1,25 +1,40 @@
-<p id="notice"><%= notice %></p>
+<% if @grouping.errors.any? %>
+  <div class="alert alert-warning" role="alert">
+    <h3 class="alert-heading"><%= pluralize(@grouping.errors.count, "error") %> prohibited this grouping from being saved:</h3>
 
-<h1>Groupings</h1>
+    <ul class="list-group list-group-flush">
+      <% @grouping.errors.each do |error| %>
+        <li class="list-group-item list-group-item-warning"><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<div class="card my-3">
+  <div class="card-header d-flex justify-content-between">
+    <h1>Groupings</h1>
 
-  <tbody>
-    <% @groupings.each do |grouping| %>
-      <tr>
-        <td><%= grouping.id %></td>   
-        <td><%= link_to 'Show', grouping %></td>
-        <td><%= link_to 'Destroy', grouping, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <%= form_with(model: @grouping) do |form| %>
+      <%= form.submit 'Add another', class: 'btn btn-primary my-3' %>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <% @groupings.each do |grouping| %>
+        <li class="list-group-item <%= cycle('list-group-item-dark', 'list-group-item-light') %>">
+          <div class="row">
+            <div class="col-12 col-md-6 font-weight-bold">
+              ID: <%= grouping.id %>
+            </div>
 
-<%= link_to 'New Grouping', new_grouping_path %>
+            <div class="col-12 col-md-6 d-flex justify-content-end flex-col my-3">
+              <%= link_to 'More Details', grouping, class: 'btn btn-primary me-3' %>
+              <%= link_to 'Remove', grouping, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,11 +1,11 @@
 <%= form_with(model: team_member) do |form| %>
   <% if team_member.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(team_member.errors.count, "error") %> prohibited this team_member from being saved:</h2>
+    <div class="alert alert-warning" role="alert">
+      <h3 class="alert-heading"><%= pluralize(team_member.errors.count, "error") %> prohibited this team_member from being saved:</h3>
 
-      <ul>
+      <ul class="list-group list-group-flush">
         <% team_member.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="list-group-item list-group-item-warning"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
